@@ -5,8 +5,8 @@ header("Content-Type: application/json");
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-if (!isset($data['flower_name']) || empty($data['flower_name'])) {
-    echo json_encode(["status" => "error", "message" => "Flower name is required."]);
+if (!isset($data['coffee_name']) || empty($data['coffee_name'])) {
+    echo json_encode(["status" => "error", "message" => "Coffee name is required."]);
     exit;
 }
 
@@ -20,15 +20,15 @@ if (!isset($data['quantity']) || !is_numeric($data['quantity']) || $data['quanti
     exit;
 }
 
-$flower_name = $conn->real_escape_string($data['flower_name']);
+$coffee_name = $conn->real_escape_string($data['coffee_name']);
 $price = (float)$data['price'];
 $quantity = (int)$data['quantity'];
 
-$sql = "INSERT INTO flowers (flower_name, price, quantity) VALUES ('$flower_name', $price, $quantity)";
+$sql = "INSERT INTO coffee (coffee_name, price, quantity) VALUES ('$coffee_name', $price, $quantity)";
 if ($conn->query($sql)) {
-    echo json_encode(["status" => "success", "message" => "Flower added successfully!"]);
+    echo json_encode(["status" => "success", "message" => "Coffee added successfully!"]);
 } else {
-    echo json_encode(["status" => "error", "message" => "Failed to add flower: " . $conn->error]);
+    echo json_encode(["status" => "error", "message" => "Failed to add coffee: " . $conn->error]);
 }
 
 $conn->close();
