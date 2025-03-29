@@ -1,45 +1,92 @@
 body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbar {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
-    font-size: 2rem;
-    color: #343a40;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  h3 {
-    font-size: 1.5rem;
-    color: #495057;
-    margin-bottom: 15px;
-  }
-  
-  .list-group-item {
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    margin-bottom: 5px;
-  }
-  
-  .btn-success {
-    background-color: #28a745;
-    border-color: #28a745;
-  }
-  
-  .btn-danger {
-    background-color: #dc3545;
-    border-color: #dc3545;
-  }
-  
-  .btn-sm {
-    padding: 5px 10px;
-    font-size: 0.875rem;
-  }
-  
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f4f1eb; /* Light beige, warm coffee shop tone */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #6f4f37; /* Coffee brown color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: #3e2723; /* Dark coffee color */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.8rem;
+  color: #4e342e; /* Lighter coffee brown */
+  margin-bottom: 15px;
+}
+
+.list-group-item {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 5px;
+  font-size: 1rem;
+  color: #3e2723; /* Dark coffee brown */
+  padding: 12px;
+}
+
+.btn-success {
+  background-color: #6f4f37; /* Coffee brown */
+  border-color: #6f4f37;
+  color: #fff;
+}
+
+.btn-danger {
+  background-color: #d32f2f; /* Red for danger, warm tones */
+  border-color: #d32f2f;
+  color: #fff;
+}
+
+.btn-sm {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #3e2723;
+}
+
+.card h5 {
+  font-size: 1.5rem;
+  color: #6f4f37;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #4e342e; /* Lighter coffee brown */
+}
+
+.card button {
+  background-color: #6f4f37; /* Coffee brown */
+  border-color: #6f4f37;
+  color: #fff;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-color: #4e342e; /* Darker coffee brown */
+}
+
+footer {
+  background-color: #6f4f37; /* Coffee brown */
+  color: #fff;
+  padding: 15px 0;
+  text-align: center;
+}
