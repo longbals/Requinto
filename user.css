@@ -1,49 +1,99 @@
-body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbar {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
-    font-size: 2rem;
-    color: #343a40;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .card {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-  }
-  
-  .btn-success {
-    background-color: #28a745;
-    border-color: #28a745;
-  }
-  
-  .btn-danger {
-    background-color: #dc3545;
-    border-color: #dc3545;
-  }
-  
-  .list-group-item {
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    margin-bottom: 5px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 25, 2025 at 09:44 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `umalay`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `coffees`
+--
+
+CREATE TABLE `coffees` (
+  `coffeeID` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `coffee_name` varchar(255) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `coffees`
+--
+
+INSERT INTO `coffees` (`coffeeID`, `price`, `coffee_name`, `quantity`) VALUES
+(1, 20, 'Espresso', 9),
+(2, 30, 'Cappuccino', 19),
+(3, 40, 'Latte', 28);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `userId` int(11) NOT NULL,
+  `firstName` varchar(255) NOT NULL,
+  `lastName` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `phoneNumber` varchar(255) NOT NULL,
+  `gender` enum('Male','Female') NOT NULL,
+  `birthday` date NOT NULL,
+  `verification` int(11) NOT NULL DEFAULT 0,
+  `profilePicture` longblob NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`userId`, `firstName`, `lastName`, `email`, `password`, `phoneNumber`, `gender`, `birthday`, `verification`, `profilePicture`, `role`, `createdAt`) VALUES
+(1, 'Gwapo', 'Nga Tao', 'gwapo@gmail.com', '1234', '213123213123', '', '0000-00-00', 0, '', 'admin', '2025-03-15 00:18:59'),
+(2, 'Benjamin', 'Requinto', 'requinto.benjaminjr@gmail.com', '12345', '213123123', '', '0000-00-00', 0, '', 'user', '2025-03-15 00:42:31'),
+(3, 'Chuy', 'Nga Tao', 'gwapa@gmail.com', '12345', '123141221421', '', '0000-00-00', 0, '', 'user', '2025-03-22 02:06:34');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`userId`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
