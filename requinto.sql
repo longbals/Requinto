@@ -24,24 +24,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `flowers`
+-- Table structure for table `coffees`
 --
 
-CREATE TABLE `flowers` (
-  `flowerID` int(11) NOT NULL,
+CREATE TABLE `coffees` (
+  `coffeeID` int(11) NOT NULL,
   `price` int(11) NOT NULL,
-  `flower_name` varchar(255) NOT NULL,
+  `coffee_name` varchar(255) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `flowers`
+-- Dumping data for table `coffees`
 --
 
-INSERT INTO `flowers` (`flowerID`, `price`, `flower_name`, `quantity`) VALUES
-(1, 20, 'Rose', 9),
-(2, 30, 'Tulips', 19),
-(3, 40, 'Lilies', 28);
+INSERT INTO `coffees` (`coffeeID`, `price`, `coffee_name`, `quantity`) VALUES
+(1, 20, 'Espresso', 9),
+(2, 30, 'Cappuccino', 19),
+(3, 40, 'Latte', 28);
 
 -- --------------------------------------------------------
 
@@ -70,7 +70,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`userId`, `firstName`, `lastName`, `email`, `password`, `phoneNumber`, `gender`, `birthday`, `verification`, `profilePicture`, `role`, `createdAt`) VALUES
 (1, 'Gwapo', 'Nga Tao', 'gwapo@gmail.com', '1234', '213123213123', '', '0000-00-00', 0, '', 'admin', '2025-03-15 00:18:59'),
-(2, 'Charles', 'Umalay', 'charles@gmail.com', '12345', '213123123', '', '0000-00-00', 0, '', 'user', '2025-03-15 00:42:31'),
+(2, 'Benjamin', 'Requinto', 'requinto.benjaminjr@gmail.com', '12345', '213123123', '', '0000-00-00', 0, '', 'user', '2025-03-15 00:42:31'),
 (3, 'Chuy', 'Nga Tao', 'gwapa@gmail.com', '12345', '123141221421', '', '0000-00-00', 0, '', 'user', '2025-03-22 02:06:34');
 
 --
