@@ -5,24 +5,24 @@ header("Content-Type: application/json");
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-if (!isset($data['flowerID']) || !isset($data['quantity'])) {
-    echo json_encode(["status" => "error", "message" => "Flower ID and quantity are required."]);
+if (!isset($data['coffeeID']) || !isset($data['quantity'])) {
+    echo json_encode(["status" => "error", "message" => "Coffee ID and quantity are required."]);
     exit;
 }
 
-$flowerID = (int)$data['flowerID'];
+$coffeeID = (int)$data['coffeeID'];
 $quantityToRemove = (int)$data['quantity'];
 
 // Fetch current stock
-$sqlCheck = "SELECT quantity FROM flowers WHERE flowerID = ?";
+$sqlCheck = "SELECT quantity FROM coffeeshop WHERE coffeeID = ?";
 $stmtCheck = $conn->prepare($sqlCheck);
-$stmtCheck->bind_param("i", $flowerID);
+$stmtCheck->bind_param("i", $coffeeID);
 $stmtCheck->execute();
 $result = $stmtCheck->get_result();
 $stmtCheck->close();
 
 if ($result->num_rows === 0) {
-    echo json_encode(["status" => "error", "message" => "Flower not found."]);
+    echo json_encode(["status" => "error", "message" => "Coffee not found."]);
     exit;
 }
 
@@ -38,25 +38,25 @@ if ($quantityToRemove <= 0 || $quantityToRemove > $currentQuantity) {
 $newQuantity = $currentQuantity - $quantityToRemove;
 
 if ($newQuantity > 0) {
-    // Update the flower's quantity
-    $sqlUpdate = "UPDATE flowers SET quantity = ? WHERE flowerID = ?";
+    // Update the coffee's quantity
+    $sqlUpdate = "UPDATE coffeeshop SET quantity = ? WHERE coffeeID = ?";
     $stmtUpdate = $conn->prepare($sqlUpdate);
-    $stmtUpdate->bind_param("ii", $newQuantity, $flowerID);
+    $stmtUpdate->bind_param("ii", $newQuantity, $coffeeID);
     if ($stmtUpdate->execute()) {
         echo json_encode(["status" => "success", "message" => "$quantityToRemove removed. New stock: $newQuantity"]);
     } else {
-        echo json_encode(["status" => "error", "message" => "Failed to update flower quantity: " . $conn->error]);
+        echo json_encode(["status" => "error", "message" => "Failed to update coffee quantity: " . $conn->error]);
     }
     $stmtUpdate->close();
 } else {
-    // If quantity reaches zero, delete the flower
-    $sqlDelete = "DELETE FROM flowers WHERE flowerID = ?";
+    // If quantity reaches zero, delete the coffee
+    $sqlDelete = "DELETE FROM coffeeshop WHERE coffeeID = ?";
     $stmtDelete = $conn->prepare($sqlDelete);
-    $stmtDelete->bind_param("i", $flowerID);
+    $stmtDelete->bind_param("i", $coffeeID);
     if ($stmtDelete->execute()) {
-        echo json_encode(["status" => "success", "message" => "Flower removed completely!"]);
+        echo json_encode(["status" => "success", "message" => "Coffee removed completely!"]);
     } else {
-        echo json_encode(["status" => "error", "message" => "Failed to remove flower: " . $conn->error]);
+        echo json_encode(["status" => "error", "message" => "Failed to remove coffee: " . $conn->error]);
     }
     $stmtDelete->close();
 }
