@@ -7,8 +7,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch Flower Data (Now includes `id` and `quantity`)
-$sql = "SELECT flowerID, flower_name, price, quantity FROM flowers;";
+// Fetch Coffee Data (Now includes `id` and `quantity`)
+$sql = "SELECT coffeeID, coffee_name, price, quantity FROM coffeeshop;";
 $result = $conn->query($sql);
 
 // Check for SQL errors
@@ -17,9 +17,9 @@ if (!$result) {
 }
 
 // Store results in an array
-$flowers = [];
+$coffees = [];
 while ($row = $result->fetch_assoc()) {
-    $flowers[] = $row;
+    $coffees[] = $row;
 }
 
 // Close Connection
@@ -31,29 +31,29 @@ $conn->close();
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Dashboard - Flower Shop</title>
+  <title>Dashboard - Coffee Shop</title>
   <link rel="stylesheet" href="/assets/css/user.css">
 </head>
 <body>  
   <header class="navbar navbar-dark bg-primary px-3">
-    <a class="navbar-brand" href="#">Flower Shop</a>
+    <a class="navbar-brand" href="#">Coffee Shop</a>
     <a href="logout.php" class="btn btn-light">Logout</a>
   </header>
   <main class="container py-4">
     <h2 class="text-center">Welcome, User!</h2>
     
     <div class="row">
-      <!-- Flower Catalog -->
+      <!-- Coffee Catalog -->
       <div class="col-md-8">
-        <h3>Available Flowers</h3>
-        <div class="row" id="flower-list">
-          <?php foreach ($flowers as $flower): ?>
+        <h3>Available Coffees</h3>
+        <div class="row" id="coffee-list">
+          <?php foreach ($coffees as $coffee): ?>
             <div class="col-md-4">
               <div class="card p-3">
-                <h5><?php echo htmlspecialchars($flower['flower_name']); ?></h5>
-                <p>Price: $<?php echo number_format($flower['price'], 2); ?></p>
-                <p>Stock: <?php echo (int)$flower['quantity']; ?></p>
-                <button class="btn btn-primary" onclick="addToCart(<?php echo (int)$flower['flowerID']; ?>, '<?php echo addslashes($flower['flower_name']); ?>', <?php echo (float)$flower['price']; ?>, <?php echo (int)$flower['quantity']; ?>)">Add to Cart</button>
+                <h5><?php echo htmlspecialchars($coffee['coffee_name']); ?></h5>
+                <p>Price: $<?php echo number_format($coffee['price'], 2); ?></p>
+                <p>Stock: <?php echo (int)$coffee['quantity']; ?></p>
+                <button class="btn btn-primary" onclick="addToCart(<?php echo (int)$coffee['coffeeID']; ?>, '<?php echo addslashes($coffee['coffee_name']); ?>', <?php echo (float)$coffee['price']; ?>, <?php echo (int)$coffee['quantity']; ?>)">Add to Cart</button>
               </div>
             </div>
           <?php endforeach; ?>
